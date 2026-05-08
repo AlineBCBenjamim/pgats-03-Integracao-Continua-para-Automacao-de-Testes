@@ -49,8 +49,8 @@ export function realizarLogin(email, senha) {
       if (informacoes[i].senha != senha) {
         return "Credenciais estão incorretas";
       }
-    }
-    
+      return "Login realizado com sucesso";
+    }    
   }
-  return "login realizado com sucesso";
+  return 'Usuário não encontrado';
 }
