@@ -1,4 +1,4 @@
-import { realizarLogin } from "../src/informacoesDosUsuarios.js";
+import { realizarLogin } from "../src/realizarLogin.js";
 import assert from "node:assert";
 
 /*
