@@ -1,0 +1,35 @@
+# Pipeline única
+name: CI - Push, Manual e Agendado
+
+# Execução por push, manual e agendada
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+
+  # Agendamento - executar a cada 6 minutos
+  schedule:
+    - cron: '*/6 * * * *'  
+
+# Tarefa dentro da pipeline
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+
+    # Passos do job
+    steps:
+      - name: Clonar repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Executar testes
+        run: npx mocha
