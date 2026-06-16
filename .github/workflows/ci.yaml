@@ -26,10 +26,19 @@ jobs:
       - name: Instalar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: latest
 
       - name: Instalar dependências
         run: npm install
 
       - name: Executar testes
         run: npx mocha
+      # Gerar relatório
+      - name: Gerar relatório de testes
+        run: npx mocha --reporter mochawesome
+
+      - name: Armazenar relatório de testes
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-testes
+          path: mochawesome-report/
